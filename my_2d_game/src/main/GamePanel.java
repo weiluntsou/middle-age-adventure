@@ -4,7 +4,7 @@ import java.awt.Color;
 import javax.swing.JPanel;
 import javax.swing.plaf.DimensionUIResource;
 
-public class GamePanel extends JPanel implements Runable {
+public class GamePanel extends JPanel implements Runnable {
     //screen settings
     final int originalTileSize = 16;
     final int scale = 3;
@@ -14,7 +14,7 @@ public class GamePanel extends JPanel implements Runable {
     final int screenWidth = tileSize * maxScreenCol;
     final int screenHeight = tileSize * maxScreenRow;
 
-    Thead.gameThread;
+    Thread gameThread;
 
     public GamePanel(){
         this.setPreferredSize(new DimensionUIResource(screenWidth, screenHeight));
@@ -22,7 +22,8 @@ public class GamePanel extends JPanel implements Runable {
         this.setDoubleBuffered(true);
     }
 
-    public void gameThread(){
+    public void startGameThread() {
+
         gameThread = new Thread(this);
         gameThread.start();
     }

@@ -17,7 +17,7 @@ public class Main {
         windonw.setLocationRelativeTo(null);
         windonw.setVisible(true);
 
-        gamePanel.startGamethread();
+        gamePanel.startGameThread();
     }
     
 }
