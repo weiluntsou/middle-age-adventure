@@ -19,6 +19,8 @@ public class GamePanel extends JPanel implements Runnable {
 
     int FPS = 60;
 
+
+
     KeyHandler keyH = new KeyHandler();
 
     Thread gameThread;
@@ -45,16 +47,31 @@ public class GamePanel extends JPanel implements Runnable {
 
     @Override
     public void run(){
+        Double drawInterval = 1000000000.0 / FPS;
+        Double nextDrawTime = System.nanoTime() + drawInterval;
 
         while (gameThread != null){
-            long currenTime = System.nanoTime();
-
-            // 1.UPDATE: update information such as character positions.
+            
             update();
 
-            // 2.DRAW: draw the screen with the update information.
             
+
             repaint();
+            
+            try {
+                Double remainingTime = nextDrawTime - System.nanoTime();
+                remainingTime = remainingTime / 1000000;
+                if (remainingTime < 0){
+                    remainingTime = (double) 0;
+                }
+
+                Thread.sleep((long) remainingTime);
+
+                nextDrawTime += drawInterval; 
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            
         }
 
 
