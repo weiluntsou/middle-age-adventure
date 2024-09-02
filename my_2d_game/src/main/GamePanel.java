@@ -27,7 +27,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     Thread gameThread;
 
-    Player player = new Player(this, keyH)
+    Player player = new Player(this, keyH);
 
 
     //set play's default postion
