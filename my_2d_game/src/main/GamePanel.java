@@ -7,6 +7,8 @@ import java.awt.Graphics2D;
 import javax.swing.JPanel;
 import javax.swing.plaf.DimensionUIResource;
 
+import entity.Player;
+
 public class GamePanel extends JPanel implements Runnable {
     //screen settings
     final int originalTileSize = 16;
@@ -24,6 +26,8 @@ public class GamePanel extends JPanel implements Runnable {
     KeyHandler keyH = new KeyHandler();
 
     Thread gameThread;
+
+    Player player = new Player(this, keyH)
 
 
     //set play's default postion
